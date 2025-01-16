@@ -73,7 +73,7 @@ const LoginScreen = () => {
                 </TouchableOpacity>
 
                 <Text style={styles.description}>
-                    By continuing you agree to Todoist's{" "}
+                    By continuing you agree to Planist's{" "}
                     <Text style={styles.link} onPress={openLink}>
                         Terms of Service
                     </Text>{" "}

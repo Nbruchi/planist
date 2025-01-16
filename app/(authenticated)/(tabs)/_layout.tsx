@@ -12,6 +12,32 @@ const Layout = () => {
             }}
         >
             <Tabs.Screen
+                name="browse"
+                options={{
+                    title: "Browse",
+                    tabBarIcon: ({ focused }: { focused: boolean }) => (
+                        <TabIcon
+                            focused={focused}
+                            title="Browse"
+                            icon={icons.document}
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="search"
+                options={{
+                    title: "Search",
+                    tabBarIcon: ({ focused }: { focused: boolean }) => (
+                        <TabIcon
+                            focused={focused}
+                            title="Today"
+                            icon={icons.calendar}
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen
                 name="today"
                 options={{
                     title: "Today",
@@ -37,33 +63,8 @@ const Layout = () => {
                     ),
                 }}
             />
-            <Tabs.Screen
-                name="search"
-                options={{
-                    title: "Search",
-                    tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Today"
-                            icon={icons.calendar}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="browse"
-                options={{
-                    title: "Browse",
-                    tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Browse"
-                            icon={icons.document}
-                        />
-                    ),
-                }}
-            />
         </Tabs>
     );
 };
+
 export default Layout;

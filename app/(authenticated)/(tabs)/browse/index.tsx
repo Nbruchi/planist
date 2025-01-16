@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-export default function Search() {
+export default function Page() {
     return (
         <View>
-            <Text>Search across your tasks</Text>
+            <Text>Page</Text>
         </View>
     );
 }

@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-export default function Today() {
+export default function Page() {
     return (
         <View>
-            <Text>Welcome home</Text>
+            <Text>Page</Text>
         </View>
     );
 }

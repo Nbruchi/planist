@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-export default function Upcoming() {
+export default function Page() {
     return (
         <View>
-            <Text>View Upcoming tasks</Text>
+            <Text>Page</Text>
         </View>
     );
 }
