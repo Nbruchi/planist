@@ -174,7 +174,7 @@ export default TaskRow;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 14,
+        padding: 10,
         backgroundColor: "#fff",
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: Colors.lightBorder,

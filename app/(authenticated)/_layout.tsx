@@ -6,12 +6,15 @@ const Layout = () => {
     const { height } = useWindowDimensions();
     const router = useRouter();
     return (
-        <Stack screenOptions={{ contentStyle: { backgroundColor: "#fff" } }}>
+        <Stack
+            screenOptions={{
+                contentStyle: { backgroundColor: "#fff" },
+            }}
+        >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen
                 name="task/[id]"
                 options={{
-                    title: "",
                     presentation: "formSheet",
                     sheetAllowedDetents:
                         height > 700 ? [0.22] : "fitToContents",
@@ -21,10 +24,10 @@ const Layout = () => {
                     sheetExpandsWhenScrolledToEdge: false,
                 }}
             />
+
             <Stack.Screen
                 name="task/new"
                 options={{
-                    title: "",
                     presentation: "formSheet",
                     sheetAllowedDetents:
                         height > 700 ? [0.22] : "fitToContents",
@@ -61,4 +64,5 @@ const Layout = () => {
         </Stack>
     );
 };
+
 export default Layout;

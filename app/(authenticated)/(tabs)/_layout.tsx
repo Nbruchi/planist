@@ -7,46 +7,17 @@ const Layout = () => {
     return (
         <Tabs
             screenOptions={{
+                headerShown: false,
                 tabBarActiveTintColor: Colors.primary,
                 tabBarInactiveTintColor: Colors.dark,
             }}
         >
             <Tabs.Screen
-                name="browse"
-                options={{
-                    title: "Browse",
-                    tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Browse"
-                            icon={icons.document}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="search"
-                options={{
-                    title: "Search",
-                    tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Today"
-                            icon={icons.calendar}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
                 name="today"
                 options={{
                     title: "Today",
                     tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Today"
-                            icon={icons.today}
-                        />
+                        <TabIcon focused={focused} icon={icons.today} />
                     ),
                 }}
             />
@@ -55,11 +26,26 @@ const Layout = () => {
                 options={{
                     title: "Upcoming",
                     tabBarIcon: ({ focused }: { focused: boolean }) => (
-                        <TabIcon
-                            focused={focused}
-                            title="Upcoming"
-                            icon={icons.calendar}
-                        />
+                        <TabIcon focused={focused} icon={icons.calendar} />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="search"
+                options={{
+                    title: "Search",
+                    tabBarIcon: ({ focused }: { focused: boolean }) => (
+                        <TabIcon focused={focused} icon={icons.search} />
+                    ),
+                }}
+            />
+            <Tabs.Screen
+                name="browse"
+                options={{
+                    title: "Browse",
+                    tabBarIcon: ({ focused }: { focused: boolean }) => (
+                        <TabIcon focused={focused} icon={icons.document} />
                     ),
                 }}
             />

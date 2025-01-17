@@ -10,10 +10,9 @@ import {
 interface TabIconProps {
     focused: boolean;
     icon: ImageSourcePropType;
-    title: string;
 }
 
-export default function TabIcon({ focused, icon, title }: TabIconProps) {
+export default function TabIcon({ focused, icon }: TabIconProps) {
     return (
         <View style={styles.iconContainer}>
             <Image
@@ -22,16 +21,6 @@ export default function TabIcon({ focused, icon, title }: TabIconProps) {
                 tintColor={focused ? Colors.primary : Colors.dark}
                 style={styles.icon}
             />
-            <Text
-                style={[
-                    styles.text,
-                    focused
-                        ? { color: Colors.primary }
-                        : { color: Colors.dark },
-                ]}
-            >
-                {title}
-            </Text>
         </View>
     );
 }
@@ -46,10 +35,6 @@ const styles = StyleSheet.create({
     icon: {
         width: 24,
         height: 24,
-    },
-    text: {
-        fontSize: 10,
-        width: "100%",
-        textAlign: "center",
+        marginBottom: 12,
     },
 });

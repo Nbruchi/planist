@@ -134,239 +134,228 @@ const TodoForm = ({ todo }: TodoFormProps) => {
     };
 
     return (
-        <>
-            <View style={{ flex: 1, backgroundColor: "#fff" }}>
-                <Modal
-                    animationType="fade"
-                    transparent={true}
-                    visible={showProjects}
-                    onRequestClose={() => {
-                        setShowProjects(!showProjects);
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <FlatList
-                                data={data}
-                                renderItem={({ item }) => (
-                                    <TouchableOpacity
-                                        style={styles.projectButton}
-                                        onPress={() => onProjectPress(item)}
-                                    >
-                                        <Text style={{ color: item.color }}>
-                                            #
-                                        </Text>
-                                        <Text style={styles.projectButtonText}>
-                                            {item.name}
-                                        </Text>
-                                    </TouchableOpacity>
-                                )}
-                                ItemSeparatorComponent={() => (
-                                    <View
-                                        style={{
-                                            height: StyleSheet.hairlineWidth,
-                                            backgroundColor: Colors.lightBorder,
-                                        }}
-                                    />
-                                )}
-                            />
-                        </View>
-                    </View>
-                </Modal>
-
-                <ScrollView
-                    contentContainerStyle={[styles.container]}
-                    keyboardShouldPersistTaps="always"
-                >
-                    <Controller
-                        control={control}
-                        name="name"
-                        rules={{ required: true }}
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                style={styles.titleInput}
-                                placeholder="Task name"
-                                value={value}
-                                onChangeText={onChange}
-                                autoFocus
-                                autoCorrect={false}
-                            />
-                        )}
-                    />
-
-                    <Controller
-                        control={control}
-                        name="description"
-                        render={({ field: { onChange, value } }) => (
-                            <TextInput
-                                style={styles.descriptionInput}
-                                placeholder="Description"
-                                value={value}
-                                onChangeText={onChange}
-                                multiline
-                            />
-                        )}
-                    />
-
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={styles.actionButtonsContainer}
-                        keyboardShouldPersistTaps="always"
-                    >
-                        <Pressable
-                            onPress={() => {
-                                const dateString = selectedDate.toISOString();
-                                setPreviouslySelectedDate(dateString);
-                                router.push("/task/date-select");
-                            }}
-                            style={({ pressed }) => {
-                                return [
-                                    styles.outlinedButton,
-                                    {
-                                        backgroundColor: pressed
-                                            ? Colors.lightBorder
-                                            : "transparent",
-                                    },
-                                    {
-                                        borderColor:
-                                            getDateObject(selectedDate).color,
-                                    },
-                                ];
-                            }}
-                        >
-                            <Ionicons
-                                name="calendar-outline"
-                                size={20}
-                                color={getDateObject(selectedDate).color}
-                            />
-                            <Text
-                                style={[
-                                    styles.outlinedButtonText,
-                                    {
-                                        color: getDateObject(selectedDate)
-                                            .color,
-                                    },
-                                ]}
-                            >
-                                {getDateObject(selectedDate).name}
-                            </Text>
-                        </Pressable>
-                        <Pressable
-                            style={({ pressed }) => {
-                                return [
-                                    styles.outlinedButton,
-                                    {
-                                        backgroundColor: pressed
-                                            ? Colors.lightBorder
-                                            : "transparent",
-                                    },
-                                ];
-                            }}
-                        >
-                            <Ionicons
-                                name="flag-outline"
-                                size={20}
-                                color={Colors.dark}
-                            />
-                            <Text style={styles.outlinedButtonText}>
-                                Priority
-                            </Text>
-                        </Pressable>
-                        <Pressable
-                            style={({ pressed }) => {
-                                return [
-                                    styles.outlinedButton,
-                                    {
-                                        backgroundColor: pressed
-                                            ? Colors.lightBorder
-                                            : "transparent",
-                                    },
-                                ];
-                            }}
-                        >
-                            <Ionicons
-                                name="pricetags-outline"
-                                size={20}
-                                color={Colors.dark}
-                            />
-                            <Text style={styles.outlinedButtonText}>
-                                Labels
-                            </Text>
-                        </Pressable>
-                        <Pressable
-                            style={({ pressed }) => {
-                                return [
-                                    styles.outlinedButton,
-                                    {
-                                        backgroundColor: pressed
-                                            ? Colors.lightBorder
-                                            : "transparent",
-                                    },
-                                ];
-                            }}
-                        >
-                            <Ionicons
-                                name="location-outline"
-                                size={20}
-                                color={Colors.dark}
-                            />
-                            <Text style={styles.outlinedButtonText}>
-                                Location
-                            </Text>
-                        </Pressable>
-                    </ScrollView>
-
-                    <View style={styles.bottomRow}>
-                        <Pressable
-                            onPress={() => setShowProjects(true)}
-                            style={({ pressed }) => {
-                                return [
-                                    styles.outlinedButton,
-                                    {
-                                        backgroundColor: pressed
-                                            ? Colors.lightBorder
-                                            : "transparent",
-                                    },
-                                ];
-                            }}
-                        >
-                            {selectedProject.id === 1 && (
-                                <Ionicons
-                                    name="file-tray-outline"
-                                    size={20}
-                                    color={Colors.dark}
+        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+            <Modal
+                animationType="fade"
+                transparent={true}
+                visible={showProjects}
+                onRequestClose={() => {
+                    setShowProjects(!showProjects);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <FlatList
+                            data={data}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    style={styles.projectButton}
+                                    onPress={() => onProjectPress(item)}
+                                >
+                                    <Text style={{ color: item.color }}>#</Text>
+                                    <Text style={styles.projectButtonText}>
+                                        {item.name}
+                                    </Text>
+                                </TouchableOpacity>
+                            )}
+                            ItemSeparatorComponent={() => (
+                                <View
+                                    style={{
+                                        height: StyleSheet.hairlineWidth,
+                                        backgroundColor: Colors.lightBorder,
+                                    }}
                                 />
                             )}
-                            {selectedProject.id !== 1 && (
-                                <Text style={{ color: selectedProject.color }}>
-                                    #
-                                </Text>
-                            )}
+                        />
+                    </View>
+                </View>
+            </Modal>
 
-                            <Text style={styles.outlinedButtonText}>
-                                {selectedProject?.name}
-                            </Text>
+            <ScrollView
+                contentContainerStyle={[styles.container]}
+                keyboardShouldPersistTaps="always"
+            >
+                <Controller
+                    control={control}
+                    name="name"
+                    rules={{ required: true }}
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            style={styles.titleInput}
+                            placeholder="Task name"
+                            value={value}
+                            onChangeText={onChange}
+                            autoFocus
+                            autoCorrect={false}
+                        />
+                    )}
+                />
+
+                <Controller
+                    control={control}
+                    name="description"
+                    render={({ field: { onChange, value } }) => (
+                        <TextInput
+                            style={styles.descriptionInput}
+                            placeholder="Description"
+                            value={value}
+                            onChangeText={onChange}
+                            multiline
+                        />
+                    )}
+                />
+
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={styles.actionButtonsContainer}
+                    keyboardShouldPersistTaps="always"
+                >
+                    <Pressable
+                        onPress={() => {
+                            const dateString = selectedDate.toISOString();
+                            setPreviouslySelectedDate(dateString);
+                            router.push("/task/date-select");
+                        }}
+                        style={({ pressed }) => {
+                            return [
+                                styles.outlinedButton,
+                                {
+                                    backgroundColor: pressed
+                                        ? Colors.lightBorder
+                                        : "transparent",
+                                },
+                                {
+                                    borderColor:
+                                        getDateObject(selectedDate).color,
+                                },
+                            ];
+                        }}
+                    >
+                        <Ionicons
+                            name="calendar-outline"
+                            size={20}
+                            color={getDateObject(selectedDate).color}
+                        />
+                        <Text
+                            style={[
+                                styles.outlinedButtonText,
+                                {
+                                    color: getDateObject(selectedDate).color,
+                                },
+                            ]}
+                        >
+                            {getDateObject(selectedDate).name}
+                        </Text>
+                    </Pressable>
+                    <Pressable
+                        style={({ pressed }) => {
+                            return [
+                                styles.outlinedButton,
+                                {
+                                    backgroundColor: pressed
+                                        ? Colors.lightBorder
+                                        : "transparent",
+                                },
+                            ];
+                        }}
+                    >
+                        <Ionicons
+                            name="flag-outline"
+                            size={20}
+                            color={Colors.dark}
+                        />
+                        <Text style={styles.outlinedButtonText}>Priority</Text>
+                    </Pressable>
+                    <Pressable
+                        style={({ pressed }) => {
+                            return [
+                                styles.outlinedButton,
+                                {
+                                    backgroundColor: pressed
+                                        ? Colors.lightBorder
+                                        : "transparent",
+                                },
+                            ];
+                        }}
+                    >
+                        <Ionicons
+                            name="pricetags-outline"
+                            size={20}
+                            color={Colors.dark}
+                        />
+                        <Text style={styles.outlinedButtonText}>Labels</Text>
+                    </Pressable>
+                    <Pressable
+                        style={({ pressed }) => {
+                            return [
+                                styles.outlinedButton,
+                                {
+                                    backgroundColor: pressed
+                                        ? Colors.lightBorder
+                                        : "transparent",
+                                },
+                            ];
+                        }}
+                    >
+                        <Ionicons
+                            name="location-outline"
+                            size={20}
+                            color={Colors.dark}
+                        />
+                        <Text style={styles.outlinedButtonText}>Location</Text>
+                    </Pressable>
+                </ScrollView>
+
+                <View style={styles.bottomRow}>
+                    <Pressable
+                        onPress={() => setShowProjects(true)}
+                        style={({ pressed }) => {
+                            return [
+                                styles.outlinedButton,
+                                {
+                                    backgroundColor: pressed
+                                        ? Colors.lightBorder
+                                        : "transparent",
+                                },
+                            ];
+                        }}
+                    >
+                        {selectedProject.id === 1 && (
                             <Ionicons
-                                name="caret-down"
-                                size={14}
+                                name="file-tray-outline"
+                                size={20}
                                 color={Colors.dark}
                             />
-                        </Pressable>
+                        )}
+                        {selectedProject.id !== 1 && (
+                            <Text style={{ color: selectedProject.color }}>
+                                #
+                            </Text>
+                        )}
 
-                        <Pressable
-                            style={[
-                                styles.submitButton,
-                                { opacity: errors.name ? 0.5 : 1 },
-                            ]}
-                            onPress={handleSubmit(onSubmit)}
-                        >
-                            <Ionicons name="arrow-up" size={24} color="#fff" />
-                        </Pressable>
-                    </View>
-                </ScrollView>
-            </View>
-        </>
+                        <Text style={styles.outlinedButtonText}>
+                            {selectedProject?.name}
+                        </Text>
+                        <Ionicons
+                            name="caret-down"
+                            size={14}
+                            color={Colors.dark}
+                        />
+                    </Pressable>
+
+                    <Pressable
+                        style={[
+                            styles.submitButton,
+                            { opacity: errors.name ? 0.5 : 1 },
+                        ]}
+                        onPress={handleSubmit(onSubmit)}
+                    >
+                        <Ionicons name="arrow-up" size={24} color="#fff" />
+                    </Pressable>
+                </View>
+            </ScrollView>
+        </View>
     );
 };
 
