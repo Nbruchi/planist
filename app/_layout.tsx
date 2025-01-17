@@ -1,17 +1,17 @@
-import { View, LogBox, ActivityIndicator } from "react-native";
-import React, { Suspense, useEffect } from "react";
-import { config } from "@/lib/config";
-import { Stack, usePathname, useRouter, useSegments } from "expo-router";
+import { Stack, useRouter, useSegments, usePathname } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ClerkLoaded, ClerkProvider, useAuth } from "@clerk/clerk-expo";
+import { Suspense, useEffect } from "react";
+import { View, ActivityIndicator, LogBox } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { tokenCache } from "@/lib/cache";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { openDatabaseSync, SQLiteProvider } from "expo-sqlite";
+import { Toaster } from "sonner-native";
+import migrations from "@/drizzle/migrations";
 import { drizzle } from "drizzle-orm/expo-sqlite";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
-import migrations from "@/drizzle/migrations";
+import { SQLiteProvider, openDatabaseSync } from "expo-sqlite";
 import { addDummyData } from "@/lib/addDummyData";
-import { Toaster } from "sonner-native";
+import { config } from "@/lib/config";
 
 const publishableKey = config.env.clerk.publishableKey as string;
 
